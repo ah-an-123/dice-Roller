@@ -3,9 +3,9 @@ let btn = document.getElementById("btn");
 let count = document.getElementById("count");
 let numbers = document.getElementById("numbers")
 let Code = document.getElementById("code");
-let refresh=document.getElementById("refresh");
-let tempCount=0;
-let temNumbers=0;
+let refresh = document.getElementById("refresh");
+let tempCount = 0;
+let temNumbers = 0;
 
 //Random Number Generator Function
 const gernerateRandomNumber = () => {
@@ -34,28 +34,30 @@ const getDiceFunction = (randomNumber) => {
 //Animate Function For Animation
 const animateFunction = () => {
     Code.classList.add('roll-animation');
+    btn.disabled = true;
     setTimeout(() => {
         Code.classList.remove('roll-animation');
+        btn.disabled = false;
     }, 1000)
 }
 
-const updateTable=(con,num)=>{
-count.innerText=con;
-numbers.innerText=num;
+const updateTable = (con, num) => {
+    count.innerText = con;
+    numbers.innerText = num;
 }
 
 btn.addEventListener('click', () => {
     let randomNumber = gernerateRandomNumber();
     let code = getDiceFunction(randomNumber);
-    temNumbers=temNumbers+randomNumber;
+    temNumbers = temNumbers + randomNumber;
     tempCount++;
-    updateTable(tempCount,temNumbers);
+    updateTable(tempCount, temNumbers);
     Code.innerHTML = code;
     animateFunction();
 })
 
-refresh.addEventListener('click',()=>{
-    tempCount=0;
-    temNumbers=0;
-    updateTable(tempCount,temNumbers);
+refresh.addEventListener('click', () => {
+    tempCount = 0;
+    temNumbers = 0;
+    updateTable(tempCount, temNumbers);
 })
